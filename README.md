@@ -1,1 +1,1 @@
-# gerenciador-tarefas
+# gerenciador-receitas
