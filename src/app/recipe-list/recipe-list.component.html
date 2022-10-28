@@ -1,0 +1,27 @@
+<div class="recipe-list">
+    <table class="centered responsive-table">
+        <thead>
+            <tr>
+                <th *ngFor="let column of columns">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let recipe of recipes">
+                <td>
+                    <img src={{recipe.image}} />
+                </td>
+                <td>{{recipe.name}}</td>
+                <td>
+                    <app-recipe-list-tags [tags]="recipe.tags"></app-recipe-list-tags>
+                </td>
+                <td class="actions">
+                    <a class="btn blue btn-small"><i class="material-icons">edit</i></a>
+                    <a class="btn red btn-small"><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

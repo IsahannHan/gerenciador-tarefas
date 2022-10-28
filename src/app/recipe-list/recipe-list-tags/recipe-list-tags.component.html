@@ -1,0 +1,5 @@
+<div class="tags">
+    <p *ngFor="let tag of tags" [ngStyle]="{'color': tag.color, 'backgroundColor': tag.backgroundColor}">
+        {{tag.name}}
+    </p>
+</div>
