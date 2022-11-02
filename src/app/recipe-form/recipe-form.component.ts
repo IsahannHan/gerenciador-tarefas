@@ -12,9 +12,10 @@ export class RecipeFormComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.id = params['id'];
-    });
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('id'));
+
+    console.log(productIdFromRoute);
   }
 
   save(): void {

@@ -30,7 +30,7 @@ const routes: Routes = [
         component: RecipeListComponent,
       },
       {
-        path: 'recipe-form',
+        path: 'recipe-form/:id',
         component: RecipeFormComponent,
         
       },
