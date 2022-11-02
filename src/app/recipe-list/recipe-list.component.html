@@ -18,7 +18,7 @@
                     <app-recipe-list-tags [tags]="recipe.tags"></app-recipe-list-tags>
                 </td>
                 <td class="actions">
-                    <a class="btn blue btn-small" [routerLink]="['/main-app/recipe-form']" [queryParams]="{ id: recipe.id }"><i class="material-icons">edit</i></a>
+                    <a class="btn blue btn-small" [routerLink]="['/main-app/recipe-form', recipe.id]"><i class="material-icons">edit</i></a>
                     <a class="btn red btn-small"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
