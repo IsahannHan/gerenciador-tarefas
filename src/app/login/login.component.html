@@ -1,0 +1,19 @@
+<div class="main">
+    <div class="login">
+        <h4 class="login-title">Gerenciador de Receitas</h4>
+
+        <div class="login-info">
+            <div class="input-field col s6 login-input">
+                <input id="login" type="text" class="validate" [formControl]="userLogin">
+                <label for="login">Login</label>
+            </div>
+
+            <div class="input-field col s6 login-input">
+                <input id="password" type="password" class="validate" [formControl]="userPassword">
+                <label for="password">Senha</label>
+            </div>
+
+            <a class="waves-effect waves-light btn login-button deep-purple darken-4" (click)="login()">Entrar</a>
+        </div>
+    </div>
+</div>

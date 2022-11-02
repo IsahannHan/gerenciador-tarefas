@@ -3,6 +3,9 @@
         <a href="#" class="brand-logo center">{{title}}</a>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a routerLink="recipe-list">Listagem</a></li>
+            <li><a [routerLink]="['recipe-form']" [queryParams]="{ id: 0 }">Novo</a></li>
+
             <li><a class="waves-effect waves-light btn deep-purple lighten-1" (click)="exit()">Sair</a></li>
         </ul>
     </div>

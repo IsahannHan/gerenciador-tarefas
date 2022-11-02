@@ -1,0 +1,41 @@
+<div class="form">
+
+    <div class="file-field input-field recipe-image">
+        <div class="btn">
+            <span>Adicionar imagem</span>
+            <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+
+    <div class="top">
+        <div class="input-field">
+            <input id="name" type="text" class="validate">
+            <label for="name">Nome</label>
+        </div>
+
+        <div class="input-field ">
+            <input id="tags" type="text" class="validate">
+            <label for="tags">Tags</label>
+        </div>
+    </div>
+
+    <div class="middle">
+        <div class="input-field">
+            <textarea id="ingredients" class="validate materialize-textarea"></textarea>
+            <label for="ingredients">Ingredientes</label>
+        </div>
+
+        <div class="input-field">
+            <textarea id="instructions" class="validate materialize-textarea"></textarea>
+            <label for="instructions">Instruções de preparo</label>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a class="waves-effect waves-light btn blue darken-4"><i class="material-icons left">clear</i>Limpar campos</a>
+        <a class="waves-effect waves-light btn green" (click)="save()"><i class="material-icons left">save</i>Salvar</a>
+    </div>
+</div>
