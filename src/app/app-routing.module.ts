@@ -32,6 +32,7 @@ const routes: Routes = [
       {
         path: 'recipe-form',
         component: RecipeFormComponent,
+        
       },
       {
         path: 'recipe-view',

@@ -1,12 +1,8 @@
 export interface Recipe {
+  id: number,
   image: string;
   name: string;
-  tags: Tag[];
+  ingredients?: string;
+  instructions?: string;
+  tags: string[];
 }
-
-export interface Tag {
-  name: string,
-  color: string,
-  backgroundColor: string
-}
-

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Tag } from 'src/models/Recipe';
 
 @Component({
   selector: 'app-recipe-list-tags',
@@ -8,7 +7,7 @@ import { Tag } from 'src/models/Recipe';
 })
 export class RecipeListTagsComponent implements OnInit {
   @Input()
-  tags: Tag[] = [];
+  tags: string[] = [];
 
   constructor() {}
 

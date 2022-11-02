@@ -7,35 +7,38 @@ import { Recipe } from 'src/models/Recipe';
   styleUrls: ['./recipe-list.component.sass'],
 })
 export class RecipeListComponent implements OnInit {
-  columns: string[] = ['Imagem', 'Nomes', 'Tags', 'Ações'];
+  columns: string[] = ['Imagem', 'Nome', 'Tags', 'Ações'];
   recipes: Recipe[] = [
     {
+      id: 1,
       image:
         'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
       name: 'Bolo de banana',
       tags: [
-        { name: 'Banana', color: 'white', backgroundColor: '#a9cfb6' },
-        { name: 'Bolo', color: 'white', backgroundColor: '#a9cfb6' },
-        { name: 'Doce', color: 'white', backgroundColor: '#a9cfb6' },
-        { name: 'Lactose', color: 'white', backgroundColor: '#a9cfb6' },
+        'Banana',
+        'Bolo',
+        'Doce',
+        'Lactose',
       ],
     },
     {
+      id: 2,
       image:
         'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
       name: 'Carne assada',
       tags: [
-        { name: 'Carne', color: 'white', backgroundColor: '#a9cfb6' },
-        { name: 'Bom', color: 'white', backgroundColor: '#a9cfb6' },
+        'Carne',
+        'Bom',
       ],
     },
     {
+      id: 3,
       image:
         'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
       name: 'Strogonoff',
       tags: [
-        { name: 'Frango', color: 'white', backgroundColor: '#a9cfb6' },
-        { name: 'Lactose', color: 'white', backgroundColor: '#a9cfb6' },
+        'Frango',
+        'Lactose',
       ],
     },
   ];
