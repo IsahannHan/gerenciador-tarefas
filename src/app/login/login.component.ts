@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { toast } from 'materialize-css';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import * as M from 'materialize-css';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
     const validPassword = !!this.userPassword.value;
 
     if (!validLogin || !validPassword) {
-      toast({
+      M.toast({
         html: 'Login inválido!',
         displayLength: 5000,
         classes: 'rounded',
