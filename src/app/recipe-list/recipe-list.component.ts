@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/models/Recipe';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,43 +8,24 @@ import { Recipe } from 'src/models/Recipe';
   styleUrls: ['./recipe-list.component.sass'],
 })
 export class RecipeListComponent implements OnInit {
-  columns: string[] = ['Imagem', 'Nome', 'Tags', 'Ações'];
-  recipes: Recipe[] = [
-    {
-      id: 1,
-      image:
-        'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
-      name: 'Bolo de banana',
-      tags: [
-        'Banana',
-        'Bolo',
-        'Doce',
-        'Lactose',
-      ],
-    },
-    {
-      id: 2,
-      image:
-        'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
-      name: 'Carne assada',
-      tags: [
-        'Carne',
-        'Bom',
-      ],
-    },
-    {
-      id: 3,
-      image:
-        'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
-      name: 'Strogonoff',
-      tags: [
-        'Frango',
-        'Lactose',
-      ],
-    },
-  ];
+  columns: string[] = ['Nome', 'Tags', 'Ações'];
+  recipes: Recipe[] = [];
 
-  constructor() {}
+  constructor(
+    private recipeService: RecipeService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.recipes = this.recipeService.findAll();
+  }
+
+  delete(id: number): void {
+    this.recipeService.delete(id);
+    this.recipes = this.recipeService.findAll();
+
+    M.toast({
+      html: 'Receita removida com sucesso!',
+      displayLength: 5000,
+    });
+  }
 }
