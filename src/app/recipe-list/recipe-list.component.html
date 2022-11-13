@@ -10,16 +10,16 @@
 
         <tbody>
             <tr *ngFor="let recipe of recipes">
-                <td>
+                <!-- <td>
                     <img src={{recipe.image}} />
-                </td>
+                </td> -->
                 <td>{{recipe.name}}</td>
                 <td>
-                    <app-recipe-list-tags [tags]="recipe.tags"></app-recipe-list-tags>
+                    <app-recipe-list-tags [tags]="recipe.tags.split(' ')"></app-recipe-list-tags>
                 </td>
                 <td class="actions">
                     <a class="btn blue btn-small" [routerLink]="['/main-app/recipe-form', recipe.id]"><i class="material-icons">edit</i></a>
-                    <a class="btn red btn-small"><i class="material-icons">delete</i></a>
+                    <a class="btn red btn-small" (click)="delete(recipe.id);"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         </tbody>
