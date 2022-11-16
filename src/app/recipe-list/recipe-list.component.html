@@ -1,5 +1,5 @@
 <div class="recipe-list">
-    <table class="centered responsive-table">
+    <table class="centered responsive-table" *ngIf="this.recipes.length > 0">
         <thead>
             <tr>
                 <th *ngFor="let column of columns">

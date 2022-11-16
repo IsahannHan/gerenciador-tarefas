@@ -18,12 +18,12 @@ https://www.figma.com/file/VyNrBbEOAnoHHLysOfcfVY/Prot%C3%B3tipo---Gerenciador-d
 - [x] Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
 - [x] Mapear componentes à rotas no módulo de rotas.
 - [x] Criar navegação entre páginas por meio de rotas.
-- [X] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
-- [ ] Validar campos do formulário com REGEX e apresentar os erros.
-- [ ] Desabilitar o botão de submit enquanto o formulário está inválido.
-- [ ] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
-- [ ] Cadastrar uma entidade usando uma API (JSON Server ou Firebase).
-- [ ] Apresentar uma lista de dados com a diretiva estrutural ngFor.
-- [ ] Usar a diretiva ngIf
+- [x] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
+- [x] Validar campos do formulário com REGEX e apresentar os erros.
+- [x] Desabilitar o botão de submit enquanto o formulário está inválido.
+- [x] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
+- [x] Cadastrar uma entidade usando uma API (JSON Server ou Firebase).
+- [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
+- [x] Usar a diretiva ngIf
 - [ ] Formatar a apresentação de dados com Pipes.
 - [ ] Build e deploy da aplicação.

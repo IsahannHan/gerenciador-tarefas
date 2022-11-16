@@ -11,21 +11,34 @@ export class RecipeListComponent implements OnInit {
   columns: string[] = ['Nome', 'Tags', 'Ações'];
   recipes: Recipe[] = [];
 
-  constructor(
-    private recipeService: RecipeService
-  ) {}
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.recipes = this.recipeService.findAll();
+    this.findAllRecipes();
   }
 
   delete(id: number): void {
-    this.recipeService.delete(id);
-    this.recipes = this.recipeService.findAll();
+    this.recipeService
+      .delete(id)
+      .then((res) => {
+        if (res !== null) {
+          M.toast({
+            html: 'Receita removida com sucesso!',
+            displayLength: 5000,
+          });
 
-    M.toast({
-      html: 'Receita removida com sucesso!',
-      displayLength: 5000,
-    });
+          this.findAllRecipes();
+        }
+      })
+      .catch((err) => console.error(err));
+  }
+
+  private findAllRecipes(): void {
+    this.recipeService
+      .findAll()
+      .then((res) => {
+        this.recipes = res;
+      })
+      .catch((err) => console.error(err));
   }
 }
