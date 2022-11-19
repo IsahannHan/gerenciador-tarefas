@@ -13,7 +13,8 @@ export class RecipeFormComponent implements OnInit {
   @ViewChild('form')
   form!: NgForm;
 
-  recipe!: Recipe;
+  recipe: Recipe = new Recipe(0, '', '', '', '', '');
+  file: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,16 +26,23 @@ export class RecipeFormComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const recipeId = Number(routeParams.get('id'));
 
+    if (recipeId === 0) return;
+
     this.recipeService
       .findById(recipeId)
       .then((res) => {
-        if (res !== null) {
-          this.recipe = res;
-        } else {
-          this.recipe = new Recipe(0, '', '', '', '', '');
-        }
+        if (res !== null) this.recipe = res;
       })
       .catch((err) => console.error(err));
+  }
+
+  onFileChange(fileInputEvent: any) {
+    const file = fileInputEvent.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.recipe.image = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   onSubmit() {

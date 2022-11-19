@@ -1,6 +1,6 @@
 export class Recipe {
   id: number;
-  image: string;
+  image: string | ArrayBuffer | null;
   name: string;
   ingredients: string;
   instructions: string;

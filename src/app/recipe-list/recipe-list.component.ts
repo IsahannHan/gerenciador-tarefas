@@ -8,7 +8,7 @@ import { RecipeService } from './recipe.service';
   styleUrls: ['./recipe-list.component.sass'],
 })
 export class RecipeListComponent implements OnInit {
-  columns: string[] = ['Nome', 'Tags', 'Ações'];
+  columns: string[] = ['Imagem', 'Nome', 'Tags', 'Ações'];
   recipes: Recipe[] = [];
 
   constructor(private recipeService: RecipeService) {}
