@@ -13,7 +13,8 @@ export class RecipeFormComponent implements OnInit {
   @ViewChild('form')
   form!: NgForm;
 
-  recipe!: Recipe;
+  recipe: Recipe = new Recipe(0, '', '', '', '', '');
+  file: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,31 +26,63 @@ export class RecipeFormComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const recipeId = Number(routeParams.get('id'));
 
-    if (recipeId > 0){
-      this.recipe = this.recipeService.findById(recipeId);
-      console.log(this.recipe);
-      
-    }else 
-      this.recipe = new Recipe(0, '', '', '', '', '');
+    if (recipeId === 0) return;
+
+    this.recipeService
+      .findById(recipeId)
+      .then((res) => {
+        if (res !== null) this.recipe = res;
+      })
+      .catch((err) => console.error(err));
+  }
+
+  onFileChange(fileInputEvent: any) {
+    const file = fileInputEvent.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.recipe.image = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   onSubmit() {
-    if(this.recipe.id == 0){
-      this.recipe.id = this.recipeService.getLastId() + 1;
-      this.recipeService.save(this.recipe);
+    if (this.recipe.id == 0) {
+      this.salvarReceita();
     } else {
-      this.recipeService.update(this.recipe);
+      this.atualizarReceita();
     }
-
-    M.toast({
-      html: 'Receita salva com sucesso!',
-      displayLength: 5000,
-    });
-
-    this.router.navigate(['/main-app']);
   }
 
   clearFields() {
     this.recipe = new Recipe(0, '', '', '', '', '');
+  }
+
+  private salvarReceita(): void {
+    this.recipe.id = this.recipeService.getLastId() + 1;
+    this.recipeService
+      .save(this.recipe)
+      .then((res) => {
+        M.toast({
+          html: 'Receita salva com sucesso!',
+          displayLength: 3000,
+        });
+
+        this.router.navigate(['/main-app']);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  private atualizarReceita(): void {
+    this.recipeService
+      .update(this.recipe)
+      .then((res) => {
+        M.toast({
+          html: 'Receita atualizada com sucesso!',
+          displayLength: 3000,
+        });
+
+        this.router.navigate(['/main-app']);
+      })
+      .catch((err) => console.error(err));
   }
 }

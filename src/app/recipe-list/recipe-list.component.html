@@ -1,5 +1,5 @@
 <div class="recipe-list">
-    <table class="centered responsive-table">
+    <table class="centered responsive-table" *ngIf="this.recipes.length > 0">
         <thead>
             <tr>
                 <th *ngFor="let column of columns">
@@ -10,9 +10,9 @@
 
         <tbody>
             <tr *ngFor="let recipe of recipes">
-                <!-- <td>
-                    <img src={{recipe.image}} />
-                </td> -->
+                <td>
+                    <img class="image" alt="Imagem da receita" src={{recipe.image}} />
+                </td>
                 <td>{{recipe.name}}</td>
                 <td>
                     <app-recipe-list-tags [tags]="recipe.tags.split(' ')"></app-recipe-list-tags>

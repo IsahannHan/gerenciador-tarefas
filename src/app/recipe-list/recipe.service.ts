@@ -1,63 +1,60 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from 'src/models/Recipe';
-import { WebStorage } from 'src/services/WebStorage';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeService extends WebStorage {
-  webStorageKey: string = 'RECIPES';
+export class RecipeService {
+  baseUrl = 'http://localhost:3000/recipes';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
-  findAll(): Recipe[] {
-    return WebStorage.getEntity(this.webStorageKey);
+  constructor(private httpClient: HttpClient) {}
+
+  findAll(): Promise<Recipe[]> {
+    return lastValueFrom(this.httpClient.get<Recipe[]>(this.baseUrl));
   }
 
-  findById(id: number): Recipe {
-    const recipes: Recipe[] = this.findAll();
-
-    const recipe: Recipe | undefined = recipes.find(
-      (recipe) => recipe.id === id
-    );
-
-    if (recipe !== undefined) return recipe;
-
-    return null as any;
+  findById(id: number): Promise<Recipe> {
+    return lastValueFrom(this.httpClient.get<Recipe>(`${this.baseUrl}/${id}`));
   }
 
   getLastId(): number {
-    const recipes: Recipe[] = this.findAll();
+    const recipes: Promise<Recipe[]> = this.findAll();
+    let id = 1;
 
-    console.log(recipes);
-    
+    recipes.then((recipes) => {
+      if (recipes.length > 0) id = recipes[recipes.length - 1].id;
+    });
 
-    if(recipes.length > 0)
-      return recipes[recipes.length - 1].id;
-    else 
-      return 1;
+    return id;
   }
 
-  save(recipe: Recipe) {
-    const recipes: Recipe[] = this.findAll()??[];
-
-    recipes.push(recipe);
-
-    WebStorage.saveEntity(this.webStorageKey, recipes);
+  save(recipe: Recipe): Promise<Recipe> {
+    return lastValueFrom(
+      this.httpClient.post<Recipe>(
+        this.baseUrl,
+        JSON.stringify(recipe),
+        this.httpOptions
+      )
+    );
   }
 
-  update(recipe: Recipe) {
-    this.delete(recipe.id);
-    this.save(recipe);
+  update(recipe: Recipe): Promise<Recipe> {
+    return lastValueFrom(
+      this.httpClient.put<Recipe>(
+        `${this.baseUrl}/${recipe.id}`,
+        JSON.stringify(recipe),
+        this.httpOptions
+      )
+    );
   }
-
-  saveAll(recipes: Recipe[]) {
-    WebStorage.saveEntity(this.webStorageKey, recipes);
-  }
-
-  delete(id: number) {
-    let recipes: Recipe[] = this.findAll();
-
-    recipes = recipes.filter((recipe) => recipe.id !== id);
-
-    this.saveAll(recipes);
+  delete(id: number): Promise<Recipe> {
+    return lastValueFrom(
+      this.httpClient.delete<Recipe>(`${this.baseUrl}/${id}`)
+    );
   }
 }
