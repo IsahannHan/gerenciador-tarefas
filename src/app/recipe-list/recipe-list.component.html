@@ -13,7 +13,7 @@
                 <td>
                     <img class="image" alt="Imagem da receita" src={{recipe.image}} />
                 </td>
-                <td>{{recipe.name}}</td>
+                <td>{{recipe.name | camelCase}}</td>
                 <td>
                     <app-recipe-list-tags [tags]="recipe.tags.split(' ')"></app-recipe-list-tags>
                 </td>
