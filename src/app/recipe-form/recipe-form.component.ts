@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from 'src/models/Recipe';
 import { RecipeService } from '../recipe-list/recipe.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-recipe-form',
@@ -13,7 +14,7 @@ export class RecipeFormComponent implements OnInit {
   @ViewChild('form')
   form!: NgForm;
 
-  recipe: Recipe = new Recipe(0, '', '', '', '', '');
+  recipe: Recipe = new Recipe('', '', '', '', '', '');
   file: any;
 
   constructor(
@@ -24,9 +25,9 @@ export class RecipeFormComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const recipeId = Number(routeParams.get('id'));
+    const recipeId: string = routeParams.get('id')!;
 
-    if (recipeId === 0) return;
+    if (recipeId === '') return;
 
     this.recipeService
       .findById(recipeId)
@@ -46,7 +47,7 @@ export class RecipeFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.recipe.id == 0) {
+    if (this.recipe.id === '') {
       this.salvarReceita();
     } else {
       this.atualizarReceita();
@@ -54,11 +55,11 @@ export class RecipeFormComponent implements OnInit {
   }
 
   clearFields() {
-    this.recipe = new Recipe(0, '', '', '', '', '');
+    this.recipe = new Recipe('', '', '', '', '', '');
   }
 
   private salvarReceita(): void {
-    this.recipe.id = this.recipeService.getLastId() + 1;
+    this.recipe.id = uuidv4();
     this.recipeService
       .save(this.recipe)
       .then((res) => {

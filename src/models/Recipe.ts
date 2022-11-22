@@ -1,5 +1,5 @@
 export class Recipe {
-  id: number;
+  id: string;
   image: string | ArrayBuffer | null;
   name: string;
   ingredients: string;
@@ -7,7 +7,7 @@ export class Recipe {
   tags: string;
 
   constructor(
-    id: number,
+    id: string,
     image: string,
     name: string,
     ingredients: string,

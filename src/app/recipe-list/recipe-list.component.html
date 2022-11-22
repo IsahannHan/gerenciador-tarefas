@@ -18,6 +18,7 @@
                     <app-recipe-list-tags [tags]="recipe.tags.split(' ')"></app-recipe-list-tags>
                 </td>
                 <td class="actions">
+                    <a class="btn green btn-small" [routerLink]="['/main-app/recipe-view', recipe.id]"><i class="material-icons">remove_red_eye</i></a>
                     <a class="btn blue btn-small" [routerLink]="['/main-app/recipe-form', recipe.id]"><i class="material-icons">edit</i></a>
                     <a class="btn red btn-small" (click)="delete(recipe.id);"><i class="material-icons">delete</i></a>
                 </td>
