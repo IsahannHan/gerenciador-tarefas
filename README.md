@@ -25,5 +25,5 @@ https://www.figma.com/file/VyNrBbEOAnoHHLysOfcfVY/Prot%C3%B3tipo---Gerenciador-d
 - [x] Cadastrar uma entidade usando uma API (JSON Server ou Firebase).
 - [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [x] Usar a diretiva ngIf
-- [ ] Formatar a apresentação de dados com Pipes.
+- [x] Formatar a apresentação de dados com Pipes.
 - [ ] Build e deploy da aplicação.

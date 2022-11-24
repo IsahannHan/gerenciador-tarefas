@@ -18,19 +18,8 @@ export class RecipeService {
     return lastValueFrom(this.httpClient.get<Recipe[]>(this.baseUrl));
   }
 
-  findById(id: number): Promise<Recipe> {
+  findById(id: string): Promise<Recipe> {
     return lastValueFrom(this.httpClient.get<Recipe>(`${this.baseUrl}/${id}`));
-  }
-
-  getLastId(): number {
-    const recipes: Promise<Recipe[]> = this.findAll();
-    let id = 1;
-
-    recipes.then((recipes) => {
-      if (recipes.length > 0) id = recipes[recipes.length - 1].id;
-    });
-
-    return id;
   }
 
   save(recipe: Recipe): Promise<Recipe> {
@@ -52,7 +41,7 @@ export class RecipeService {
       )
     );
   }
-  delete(id: number): Promise<Recipe> {
+  delete(id: string): Promise<Recipe> {
     return lastValueFrom(
       this.httpClient.delete<Recipe>(`${this.baseUrl}/${id}`)
     );

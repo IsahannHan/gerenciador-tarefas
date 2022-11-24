@@ -35,7 +35,7 @@ const routes: Routes = [
         
       },
       {
-        path: 'recipe-view',
+        path: 'recipe-view/:id',
         component: RecipeViewComponent,
       },
     ],

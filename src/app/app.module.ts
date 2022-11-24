@@ -12,6 +12,7 @@ import { MainAppComponent } from './main-app/main-app.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeListTagsComponent } from './recipe-list/recipe-list-tags/recipe-list-tags.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { CamelCasePipe } from './recipe-list/camel-case.pipe';
 
 @NgModule({
   declarations: [
@@ -22,16 +23,17 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
     RecipeListComponent,
     LoginComponent,
     MainAppComponent,
-    RecipeListTagsComponent
+    RecipeListTagsComponent,
+    CamelCasePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -17,7 +17,7 @@ export class RecipeListComponent implements OnInit {
     this.findAllRecipes();
   }
 
-  delete(id: number): void {
+  delete(id: string): void {
     this.recipeService
       .delete(id)
       .then((res) => {
