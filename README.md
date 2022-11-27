@@ -7,6 +7,10 @@ O frontend da aplicação foi desenvolvido com Angular e o backend foi simulado 
 
 https://www.figma.com/file/VyNrBbEOAnoHHLysOfcfVY/Prot%C3%B3tipo---Gerenciador-de-Receitas?node-id=0%3A1
 
+## URL da aplicação
+
+https://isahann.github.io/gerenciador-receitas/
+
 ## Checklist
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
