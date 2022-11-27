@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "json-server": "json-server --watch db.json",
-    "build": "ng build",
+    "build": "ng build --base-href=/gerenciador-receitas/",
+    "ghpages": "angular-cli-ghpages --dir=dist/gerenciador-receitas",
+    "deploy": "npm run build && npm run ghpages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "angular-cli-ghpages": "^1.0.5",
     "material-icons": "^1.12.1",
     "materialize-css": "^1.0.0",
     "rxjs": "~7.5.0",
