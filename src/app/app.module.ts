@@ -13,6 +13,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeListTagsComponent } from './recipe-list/recipe-list-tags/recipe-list-tags.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { CamelCasePipe } from './recipe-list/camel-case.pipe';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CamelCasePipe } from './recipe-list/camel-case.pipe';
     FooterComponent,
     RecipeFormComponent,
     RecipeListComponent,
+    RecipeViewComponent,
     LoginComponent,
     MainAppComponent,
     RecipeListTagsComponent,

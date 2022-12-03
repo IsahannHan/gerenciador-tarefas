@@ -1,1 +1,19 @@
-<p>recipe-view works!</p>
+<div class="recipe-view">
+    <div class="main deep-purple lighten-5">
+
+        <div class="image-tags deep-purple lighten-2">
+            <img class="image" alt="Imagem da receita" src={{recipe.image}} />
+            <app-recipe-list-tags [tags]="recipe.tags.split(' ')"></app-recipe-list-tags>
+        </div>
+
+        <div class="info">
+            <p class="title deep-purple lighten-2">{{recipe.name}}</p>
+            <p class="ingredients deep-purple lighten-3">
+                {{recipe.ingredients}}
+            </p>
+            <p class="instructions deep-purple lighten-3">
+                {{recipe.instructions}}
+            </p>
+        </div>
+    </div>
+</div>
