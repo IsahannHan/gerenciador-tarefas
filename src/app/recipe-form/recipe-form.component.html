@@ -1,0 +1,58 @@
+<form class="form" #form="ngForm" (submit)="onSubmit()">
+    <div class="file-field input-field recipe-image">
+        <div class="btn">
+            <span>Adicionar imagem</span>
+            <input id="file" name="file" type="file" (change)="onFileChange($event)">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+
+    <div class="top">
+        <div class="input-field">
+            <input [(ngModel)]="this.recipe.name" id="name" name="name" type="text" class="validate" #name="ngModel"
+                pattern="^[a-zA-Z\s]*$" required>
+            <label for="name">Nome *</label>
+            <div class="red-text" [hidden]="name.valid || name.untouched">
+                Por favor, informe o nome da receita.
+            </div>
+        </div>
+
+        <div class="input-field ">
+            <input [(ngModel)]="this.recipe.tags" id="tags" name="tags" type="text" class="validate" #tags="ngModel"
+                pattern="^[a-zA-Z\s]*$" required>
+            <label for="tags">Tags *</label>
+            <div class="red-text" [hidden]="tags.valid || tags.untouched">
+                Por favor, informe as tags da receita.
+            </div>
+        </div>
+    </div>
+
+    <div class="middle">
+        <div class="input-field">
+            <textarea [(ngModel)]="this.recipe.ingredients" id="ingredients" name="ingredients"
+                class="validate materialize-textarea" #ingredients="ngModel" required></textarea>
+            <label for="ingredients">Ingredientes *</label>
+            <div class="red-text" [hidden]="ingredients.valid || ingredients.untouched">
+                Por favor, informe os ingredientes da receita.
+            </div>
+        </div>
+
+        <div class="input-field">
+            <textarea [(ngModel)]="this.recipe.instructions" id="instructions" name="instructions"
+                class="validate materialize-textarea" #instructions="ngModel" required></textarea>
+            <label for="instructions">Instruções de preparo *</label>
+            <div class="red-text" [hidden]="instructions.valid || instructions.untouched">
+                Por favor, informe as intruções de preparo.
+            </div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a class="waves-effect waves-light btn blue darken-4" (click)="clearFields();"><i
+                class="material-icons left">clear</i>Limpar campos</a>
+        <button class="waves-effect waves-light btn green" type="submit" [disabled]="!form.valid"><i
+                class="material-icons left">save</i>Salvar</button>
+    </div>
+</form>

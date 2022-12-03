@@ -1,0 +1,30 @@
+<div class="main">
+    <div class="login">
+        <h4 class="login-title">Gerenciador de Receitas</h4>
+
+        <form class="form" #form="ngForm" (submit)="onSubmit()">
+            <div class="login-info">
+                <div class="input-field col s6 login-input">
+                    <input id="login" type="text" class="validate" required #login="ngModel"
+                        [(ngModel)]="this.user.login" [ngModelOptions]="{standalone: true}">
+                    <label for="login">Login</label>
+                    <div class="red-text" [hidden]="login.valid || login.untouched">
+                        Por favor, informe o seu login.
+                    </div>
+                </div>
+
+                <div class="input-field col s6 login-input">
+                    <input id="password" type="password" class="validate" required #password="ngModel"
+                        [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}">
+                    <label for="password">Senha</label>
+                    <div class="red-text" [hidden]="password.valid || password.untouched">
+                        Por favor, informe a senha.
+                    </div>
+                </div>
+
+                <button class="waves-effect waves-light btn login-button deep-purple darken-4"
+                    type="submit">Entrar</button>
+            </div>
+        </form>
+    </div>
+</div>
